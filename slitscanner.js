@@ -63,12 +63,43 @@
     var slitscan = function(video) {
         // create our slitscanner frame
         var strip = create("div");
-        var stripStyle = 'display:block;background:#333;border-top:1px solid #fff;padding:10px;position:fixed;left:0;bottom:0;z-index:1337;';
+        var stripStyle = 'display:block;background:#333;border-top:1px solid #444;box-shadow: 0px 0px 10px rgba(0,0,0,.25);padding:10px;position:fixed;left:0;bottom:0;z-index:1337;';
         strip.setAttribute("style", stripStyle);
 
         var ca = create("canvas");
         ca.height = video.offsetHeight;
         ca.width = document.body.offsetWidth - 20;
+
+        // close the slit scanner
+        var buttonStyle = "border: none;margin:0 5px 2px 0;padding:4px;background:#999;cursor:pointer;color: white;";
+        var stop = create("button");
+        stop.setAttribute("style", buttonStyle);
+        stop.innerHTML = 'stop';
+        stop.onclick = function() {
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+        };
+
+        // close the slit scanner
+        var close = create("button");
+        close.setAttribute("style", buttonStyle);
+        close.innerHTML = 'close';
+        close.onclick = function() {
+            document.body.removeChild(strip);
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+        };
+
+        var link = create("a");
+        link.innerHTML = '#slitscanner on tumblr';
+        link.setAttribute("style", "margin: 3px; color: white;");
+        link.href = "http://tumblr.com/tagged/slitscannerjs";
+
+        append(strip, stop);
+        append(strip, close);
+        append(strip, link);
 
         append(strip, ca);
         append(document.body, strip);    
