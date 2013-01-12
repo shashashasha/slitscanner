@@ -1,3 +1,13 @@
+/*
+    human readable (i hope!) code for the slitscanner
+
+    i simply converted it to the bookmarklet code by 
+    compressing: http://jscompress.com/ 
+    and then encoding: http://meyerweb.com/eric/tools/dencoder/
+    and wrapping that in javascript:void();
+
+    silly and roundabout but now it's done! and done is so much better than not.
+*/
 (function(){ 
     // vimeo or youtube right now
     var host = window.location.host.split('www.').join('');
