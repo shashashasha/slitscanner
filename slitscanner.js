@@ -95,7 +95,7 @@
         var link = create("a");
         link.innerHTML = '#slitscanner on tumblr';
         link.setAttribute("style", "margin: 3px; color: white;");
-        link.href = "http://tumblr.com/tagged/slitscannerjs";
+        link.href = "http://tumblr.com/tagged/slitscanner";
         link.target = "_blank";
 
         append(strip, stop);
