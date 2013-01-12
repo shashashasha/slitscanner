@@ -6,7 +6,8 @@
     and then encoding: http://meyerweb.com/eric/tools/dencoder/
     and wrapping that in javascript:void();
 
-    silly and roundabout but now it's done! and done is so much better than not.
+    silly and roundabout but now it's done! 
+    and done is so much better than not.
 */
 (function(){ 
     // vimeo or youtube right now
