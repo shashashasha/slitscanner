@@ -108,7 +108,7 @@
             }
 
             cx = 0;
-            co.clearRect(0, 0, co.width, co.height);
+            co.clearRect(0, 0, cw, ch);
             timeout = setTimeout(draw, framerate);
         };
 
