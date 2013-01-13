@@ -124,6 +124,7 @@
         link.href = "http://tumblr.com/tagged/slitscanner";
         link.target = "_blank";
 
+        append(strip, slider);
         append(strip, stop);
         append(strip, close);
         append(strip, link);
