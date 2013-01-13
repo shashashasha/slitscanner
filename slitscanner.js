@@ -94,17 +94,22 @@
             }
 
             framerate = slider.value;
-            draw();
+            timeout = setTimeout(draw, framerate);
         };
-        // close the slit scanner
+
+        // clear the slit scanner
         var buttonStyle = "border: none;margin:0 5px 2px 0;padding:4px;background:#999;cursor:pointer;color: white;";
-        var stop = create("button");
-        stop.setAttribute("style", buttonStyle);
-        stop.innerHTML = 'stop';
-        stop.onclick = function() {
+        var clear = create("button");
+        clear.setAttribute("style", buttonStyle);
+        clear.innerHTML = 'clear';
+        clear.onclick = function() {
             if (timeout) {
                 clearTimeout(timeout);
             }
+
+            cx = 0;
+            co.clearRect(0, 0, co.width, co.height);
+            timeout = setTimeout(draw, framerate);
         };
 
         // close the slit scanner
@@ -125,7 +130,7 @@
         link.target = "_blank";
 
         append(strip, slider);
-        append(strip, stop);
+        append(strip, clear);
         append(strip, close);
         append(strip, link);
 
