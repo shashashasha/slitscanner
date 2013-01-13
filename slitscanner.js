@@ -81,6 +81,21 @@
         ca.height = video.offsetHeight;
         ca.width = document.body.offsetWidth - 20;
 
+        // adjust the speed
+        var slider = create("input");
+        slider.type = "range";
+        slider.min = "20";
+        slider.max = "400";
+        slider.setAttribute("style", "width: 100px;");
+        slider.innerHTML = 'stop';
+        slider.onchange = function() {
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+
+            framerate = slider.value;
+            console.log(framerate);
+        };
         // close the slit scanner
         var buttonStyle = "border: none;margin:0 5px 2px 0;padding:4px;background:#999;cursor:pointer;color: white;";
         var stop = create("button");
@@ -131,13 +146,11 @@
         // assuming here that we start slitscanner around the beginning of the video
         // this isn't quite exact but means we don't have to always calculate the "current time" in the video
         var framerate = (totalSeconds * 25 > cw) ? (totalSeconds * 25 / cw) * 40 : 40;
-        
-        var timeout = setInterval(function() {
+        slider.value = framerate;
+
+        var draw = function() {
             // stop if you pause or end it
-            if (video.paused) {
-                if (video.ended) {
-                    clearTimeout(timeout);    
-                }   
+            if (video.paused || video.ended) {
                 return;
             }
             
@@ -147,7 +160,11 @@
             // increment a pixel
             cx++;
 
-        }, framerate);
+            timeout = setTimeout(draw, framerate);
+        };
+
+        // start scanning
+        draw();
     };
         
     // grab all videos
