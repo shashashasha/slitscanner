@@ -94,7 +94,7 @@
             }
 
             framerate = slider.value;
-            console.log(framerate);
+            draw();
         };
         // close the slit scanner
         var buttonStyle = "border: none;margin:0 5px 2px 0;padding:4px;background:#999;cursor:pointer;color: white;";
@@ -161,6 +161,7 @@
             // increment a pixel
             cx++;
 
+            console.log(framerate);
             timeout = setTimeout(draw, framerate);
         };
 
