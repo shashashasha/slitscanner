@@ -148,7 +148,7 @@
         // this isn't quite exact but means we don't have to always calculate the "current time" in the video
         var framerate = (totalSeconds * 25 > cw) ? (totalSeconds * 25 / cw) * 40 : 40;
         slider.value = framerate;
-
+        console.log(slider.value);
         var draw = function() {
             // stop if you pause or end it
             if (video.paused || video.ended) {
