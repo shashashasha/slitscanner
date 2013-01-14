@@ -74,7 +74,7 @@
     var slitscan = function(video) {
         // create our slitscanner frame
         var strip = create("div");
-        var stripStyle = 'display:block;background:#333;border-top:1px solid #444;box-shadow: 0px 0px 10px rgba(0,0,0,.25);padding:10px;position:fixed;left:0;bottom:0;z-index:1337;';
+        var stripStyle = 'display:block;background:#333;border-top:1px solid #444;box-shadow: 0px 0px 10px rgba(0,0,0,.5);padding:10px;position:fixed;left:0;bottom:0;z-index:1337;';
         strip.setAttribute("style", stripStyle);
 
         var ca = create("canvas");
@@ -83,8 +83,7 @@
 
         // adjust the speed
         var speed = create("div");
-        speed.setAttribute("style", "padding: 4px; color: white;");
-        speed.innerHTML = 'speed: ';
+        speed.setAttribute("style", "padding: 4px; color: white; margin: 0 5px;");
 
         // adjust the speed
         var slider = create("input");
@@ -183,23 +182,46 @@
         draw();
     };
         
-    // grab all videos
-    var videos = document.body.getElementsByTagName("video");
+    var findVideo = function() {    
+        // grab all videos
+        var videos = document.body.getElementsByTagName("video");
+        for (var i = 0; i < videos.length; i++) {
+            var vid = videos[i];
+            // if they're not valid videos, ignore
+            if (!vid.hasOwnProperty("paused")) {            
+                continue;
+            }
 
-    for (var i = 0; i < videos.length; i++) {
-        var vid = videos[i];
-        // if they're not valid videos, ignore
-        if (!vid.hasOwnProperty("paused")) {            
-            continue;
+            // play it if it's paused, this works on youtube 
+            // but i think vimeo initially doesn't have a video element?
+            if (vid.paused == true) {
+                vid.play();
+            }
+
+            return vid;
         }
+    };
 
-        // play it if it's paused, this works on youtube 
-        // but i think vimeo initially doesn't have a video element?
-        if (vid.paused == true) {
-            vid.play();
-        }
+    // vimeo doesn't load video elements until the play button is clicked
+    if (host == 'vimeo.com' && videos.length == 0) {
+        // find the play button
+        var play = document.querySelectorAll("button.av canvas")[3];
 
-        // do it!
+        // create a fake click event
+        var evt = document.createEvent("MouseEvents");
+        evt.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        play.dispatchEvent(evt);
+
+        // do it! but not right now
+        setTimeout(function() {
+            slitscan(vid);  
+        }, 400);
+    } 
+    // for youtube or already playing vimeo videos
+    else {
+        var vid = findVideo();
+
+        // do it right now!
         slitscan(vid);
     }
 })();
