@@ -74,15 +74,11 @@
     var slitscan = function(video) {
         // create our slitscanner frame
         var strip = create("div");
-        var stripStyle = 'display:block;background:#333;border-top:1px solid #444;box-shadow: 0px 0px 10px rgba(0,0,0,.5);padding:10px;position:fixed;left:0;bottom:0;z-index:1337;';
+        var stripStyle = 'display:block;background:#333;border-top:1px solid #111;box-shadow: 0px 0px 10px rgba(0,0,0,.5);padding:10px;position:fixed;left:0;bottom:0;z-index:1138;';
         strip.setAttribute("style", stripStyle);
 
-        var ca = create("canvas");
-        ca.height = video.offsetHeight;
-        ca.width = document.body.offsetWidth - 20;
-
         // adjust the speed
-        var speed = create("div");
+        var speed = create("span");
         speed.setAttribute("style", "padding: 4px; color: white; margin: 0 5px;");
 
         // adjust the speed
@@ -139,6 +135,11 @@
         append(strip, clear);
         append(strip, close);
         append(strip, link);
+
+        // add the canvas we scan to
+        var ca = create("canvas");
+        ca.height = video.offsetHeight;
+        ca.width = document.body.offsetWidth - 20;
 
         append(strip, ca);
         append(document.body, strip);    
