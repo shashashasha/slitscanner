@@ -573,12 +573,12 @@ h3 {
 }
 
 a {
-  color: #ffcc00;
+  color: rgb(75, 187, 223);
   font-weight: 400;
   text-decoration: none;
 }
 a:hover {
-  color: #ffeb9b;
+  color: rgb(85, 197, 233);
 }
 
 a small {
@@ -609,7 +609,7 @@ section img {
 }
 
 blockquote {
-  border-left: 3px solid #ffcc00;
+  border-left: 3px solid rgb(75, 187, 223);
   margin: 0;
   padding: 0 0 0 20px;
   font-style: italic;
@@ -694,8 +694,8 @@ dt {
   height: 60px;
   width: 100%;
   position: fixed;
-  background: url(../images/nav-bg.gif) #353535;
-  border-bottom: 4px solid #434343;
+  background: #222;
+  border-bottom: 1px solid #434343;
   -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
   -o-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
@@ -738,7 +738,7 @@ dt {
   -o-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.7);
   box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.7);
   background-color: #93bd20;
-  padding: 10px 12px;
+  padding: 5px 5px;
   margin-top: 6px;
   line-height: 14px;
   font-size: 14px;
