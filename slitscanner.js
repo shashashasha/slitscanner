@@ -82,6 +82,11 @@
         ca.width = document.body.offsetWidth - 20;
 
         // adjust the speed
+        var speed = create("div");
+        speed.setAttribute("style", "padding: 4px; color: white;");
+        speed.innerHTML = 'speed: ';
+
+        // adjust the speed
         var slider = create("input");
         slider.type = "range";
         slider.min = "20";
@@ -94,6 +99,7 @@
             }
 
             framerate = slider.value;
+            speed.innerHTML = 'speed: ' + Math.round(1000 / framerate) + ' fps';
             timeout = setTimeout(draw, framerate);
         };
 
@@ -130,6 +136,7 @@
         link.target = "_blank";
 
         append(strip, slider);
+        append(strip, speed);
         append(strip, clear);
         append(strip, close);
         append(strip, link);
@@ -153,7 +160,9 @@
         // this isn't quite exact but means we don't have to always calculate the "current time" in the video
         var framerate = (totalSeconds * 25 > cw) ? (totalSeconds * 25 / cw) * 40 : 40;
         slider.value = framerate;
-        console.log(slider.value);
+        speed.innerHTML = 'speed: ' + Math.round(1000 / framerate) + ' fps';
+
+        // slitscan drawing
         var draw = function() {
             // stop if you pause or end it
             if (video.paused || video.ended) {
