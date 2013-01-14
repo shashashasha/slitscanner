@@ -182,9 +182,9 @@
         draw();
     };
         
+    var videos = document.body.getElementsByTagName("video");
     var findVideo = function() {    
         // grab all videos
-        var videos = document.body.getElementsByTagName("video");
         for (var i = 0; i < videos.length; i++) {
             var vid = videos[i];
             // if they're not valid videos, ignore
