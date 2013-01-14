@@ -170,7 +170,7 @@
             }
             
             // draw a pixel
-            co.drawImage(video, cx % cw, 0, 1, ch);
+            co.drawImage(video, cx, 0, 1, ch);
 
             // increment a pixel
             cx++;
