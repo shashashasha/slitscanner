@@ -214,6 +214,7 @@
 
         // do it! but not right now
         setTimeout(function() {
+            var vid = findVideo();
             slitscan(vid);  
         }, 400);
     } 
